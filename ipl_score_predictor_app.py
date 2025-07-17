@@ -72,18 +72,23 @@ if menu == "📈Show Prediction":
         if st.session_state.batting_team == st.session_state.bowling_team:
             st.error("Batting Team and Bowling Teams are Same. Please Change The Teams")
         else:
-            import urllib.request
             import pickle
-
-            # Load model from Google Drive
-            url = "https://drive.google.com/uc?export=download&id=1k_jJMrTxhKUKI58gfXDy3UbJck6xJN6Y"
+            import gdown
+            import os
 
             @st.cache_resource
             def load_model():
-                with urllib.request.urlopen(url) as response:
-                    return pickle.load(response)
+                url = "https://drive.google.com/uc?id=YOUR_FILE_ID"
+                output = "ml_model.pkl"
 
-            model = load_model()
+                if not os.path.exists(output):
+                    gdown.download(url, output, quiet=False)
+
+                with open(output, "rb") as f:
+                    return pickle.load(f)
+
+             model = load_model()
+
 
     
 
