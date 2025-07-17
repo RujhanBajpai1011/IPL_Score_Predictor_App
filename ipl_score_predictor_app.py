@@ -85,12 +85,13 @@ if menu == "📈Show Prediction":
                     gdown.download(url, output, quiet=False)
 
                 with open(output, "rb") as f:
-                    return pickle.load(f)
+                    model = pickle.load(f)
+
+                return model
 
              model = load_model()
+              
 
-
-    
 
             # Encode batting team
             team_encoding = {
