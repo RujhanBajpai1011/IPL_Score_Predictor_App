@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
+import os
 
 st.set_page_config(page_title="IPL Score Prediction", layout="centered")
 
@@ -72,8 +73,13 @@ if menu == "📈Show Prediction":
         if st.session_state.batting_team == st.session_state.bowling_team:
             st.error("Batting Team and Bowling Teams are Same. Please Change The Teams")
         else:
-            filename='ml_model.pkl'
-            model = pickle.load(open(filename,'rb'))
+            BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+            filename = os.path.join(BASE_DIR, 'ml_model.pkl')
+            # with open(filename, 'rb') as f:
+            #     model = pickle.load(f)
+            model = pickle.load(open(filename, 'rb'))
+
 
             # Encode batting team
             team_encoding = {
