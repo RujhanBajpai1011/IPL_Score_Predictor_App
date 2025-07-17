@@ -88,8 +88,13 @@ if menu == "📈Show Prediction":
                     model = pickle.load(f)
 
                 return model
+              
+          
+      
+  
 
-             model = load_model()
+
+model = load_model()
               
 
 
