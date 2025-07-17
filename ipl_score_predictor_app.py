@@ -11,7 +11,7 @@ st.title("IPL score Prediction App")
 # Load ML model from Google Drive
 @st.cache_resource
 def load_model():
-    url = "https://drive.google.com/uc?id=YOUR_FILE_ID"  # Replace YOUR_FILE_ID
+    url = "https://drive.google.com/uc?id=1k_jJMrTxhKUKI58gfXDy3UbJck6xJN6Y"
     output = "ml_model.pkl"
 
     if not os.path.exists(output):
